@@ -5,21 +5,20 @@ import java.awt.*;
 
 public class BorderLayoutTest {
 
-    // Unit Test 1
     @Test
     void testObjectCreation() {
         BorderLayoutDemo demo = new BorderLayoutDemo();
-        assertNotNull(demo, "Object should be created successfully");
+        assertNotNull(demo, "The object should be created successfully");
     }
 
-    // Unit Test 2
+
     @Test
-    void testMethodExists() {
+    void testMethodExecution() {
         BorderLayoutDemo demo = new BorderLayoutDemo();
-        assertDoesNotThrow(() -> demo.method());
+        assertDoesNotThrow(() -> demo.method(), "The program should open without errors");
     }
 
-    // Integration Test
+
     @Test
     void testUIIntegration() {
         BorderLayoutDemo demo = new BorderLayoutDemo();
@@ -28,12 +27,12 @@ public class BorderLayoutTest {
         JFrame foundFrame = null;
         Window[] windows = Window.getWindows();
         for (Window w : windows) {
-            if (w instanceof JFrame) {
+            if (w instanceof JFrame && ((JFrame) w).getTitle().equals("BorderLayout Demo")) {
                 foundFrame = (JFrame) w;
             }
         }
 
-        assertNotNull(foundFrame, "JFrame should exist");
-        assertTrue(foundFrame.isVisible(), "JFrame should be visible");
+        assertNotNull(foundFrame, "The target JFrame should be found");
+        assertTrue(foundFrame.isVisible(), "The JFrame should be visible");
     }
 }
